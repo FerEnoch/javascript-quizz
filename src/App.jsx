@@ -11,7 +11,7 @@ function App () {
   return (
     <main>
       <Container maxWidth='sm'>
-        <Stack justifyContent='center' alignItems='center' direction='row' gap={2}>
+        <Stack justifyContent='center' alignItems='center' direction='row' gap={2} flexWrap='wrap'>
           <JavascriptLogo />
           <Typography component='h1' variant='h2'>
             JavasScript Quizz

@@ -10,7 +10,7 @@ export function Start () {
     fetchQuestions(LIMIT_QUESTIONS)
   }
   return (
-    <Button onClick={handleClick} variant='contained'>
+    <Button sx={{ marginTop: '25px' }} onClick={handleClick} variant='contained'>
       Empezar!
     </Button>
   )

@@ -12,13 +12,15 @@ export const useQuestionsStore = create(devtools(persist((set, get) => {
       set({ questions: questions.sort(() => Math.random() - 0.5).slice(0, limit) })
     },
     selectAnswer: (questionId, answerIndex) => {
-      const { questions } = get()
+      const { questions, goNextQuestion } = get()
       const newQuestions = structuredClone(questions)
       const questionIndex = newQuestions.findIndex(question => question.id === questionId)
       const questionInfo = newQuestions[questionIndex]
       const isCorrectAnswer = questionInfo.correctAnswer === answerIndex
-      if (isCorrectAnswer) confetti() // un side effect medio polémico... pero se puede
-      // cambiamos la información en la copia de la pregunta, y actualizamos el estado
+      if (isCorrectAnswer) {
+        confetti() // un side effect medio polémico... pero se puede...
+        setTimeout(() => goNextQuestion(), 2000)
+      }
       newQuestions[questionIndex] = {
         ...questionInfo,
         isCorrectAnswer,
